@@ -11,7 +11,7 @@ module.exports = async function(req, res, next) {
     const decoded = await jwt.verify(token, config.get('jwtSecret'));
     req.user = decoded.user;
     next();
-  } catch (error) {
+  } catch (err) {
     return res.status(401).json({ msg: "Token is invalid" });
   }
 };
