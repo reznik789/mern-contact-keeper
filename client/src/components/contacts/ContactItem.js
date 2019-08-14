@@ -1,9 +1,11 @@
-import React from "react";
-import PropTypes from 'prop-types'
-
+import React, { useContext } from "react";
+import PropTypes from "prop-types";
+import ContactContext from "../../context/contact/contactContext";
 
 const ContactItem = ({ contact }) => {
+  const { deleteContact } = useContext(ContactContext);
   const { id, name, email, phone, type } = contact;
+  const onDelete = () => deleteContact(id);
   const badgeClassName =
     "badge " + (type === "professional" ? "badge-success" : "badge-primary");
   return (
@@ -33,14 +35,14 @@ const ContactItem = ({ contact }) => {
       </ul>
       <p>
         <button className="btn btn-dark btn-sm">Edit</button>
-        <button className="btn btn-danger btn-sm">Delete</button>
+        <button onClick={onDelete} className="btn btn-danger btn-sm">Delete</button>
       </p>
     </div>
   );
 };
 
 ContactItem.propTypes = {
-  contact: PropTypes.object.isRequired,
-}
+  contact: PropTypes.object.isRequired
+};
 
 export default ContactItem;
