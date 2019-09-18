@@ -1,4 +1,4 @@
 {
   "mongoURI": "URI TO MONGO DB",
-  "jwtSecret": "SECRET STRING FRO"
+  "jwtSecret": "SECRET STRING"
 }
