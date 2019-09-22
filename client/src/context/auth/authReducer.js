@@ -11,6 +11,14 @@ import {
 
 export default (state, action) => {
   switch (action.type) {
+    case USER_LOADED:
+      return {
+        ...state,
+        isAuthentificated: true,
+        isAuthentificated: true,
+        loading: false,
+        user: action.payload
+      };
     case REGISTER_SUCCESS:
       localStorage.setItem("contactKeeperToken", action.payload.token);
       return {
@@ -19,6 +27,7 @@ export default (state, action) => {
         isAuthentificated: true,
         loading: false
       };
+    case AUTH_ERROR:
     case REGISTER_FAIL:
       localStorage.removeItem("contactKeeperToken");
       return {
