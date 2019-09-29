@@ -67,7 +67,7 @@ const AuthState = props => {
   };
 
   //Login User
-  const loginUser = async (formData) => {
+  const loginUser = async formData => {
     const config = {
       headers: {
         "Content-Type": "application/json"
@@ -91,7 +91,11 @@ const AuthState = props => {
   };
 
   //Logout User
-  const logout = () => {};
+  const logout = () => {
+    dispatch({
+      type: LOGOUT
+    });
+  };
 
   //Clear Errors
   const clearErrors = () => {
