@@ -1,5 +1,6 @@
 const express = require("express");
 const connectDb = require("./config/db");
+const path = require("path");
 
 const app = express();
 
@@ -9,14 +10,13 @@ connectDb();
 //Apply middleware
 app.use(express.json({ extended: false }));
 
-app.get("/", (req, res) => {
-  res.json({
-    msg: "Welcome to ContactKeeper API..."
-  });
-});
-
 app.use("/api/users", require("./routes/users"));
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/contacts", require("./routes/contacts"));
 
+app.use(express.static(path.resolve(__dirname, "client", "build")));
+
+app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
+);
 app.listen(process.env.PORT || 8000, () => {});
