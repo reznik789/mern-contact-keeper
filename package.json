@@ -8,7 +8,8 @@
     "server": "nodemon server.js",
     "client": "yarn --cwd client start",
     "clientinstall": "yarn --cwd client add",
-    "dev": "concurrently \"yarn server\" \"yarn client\""
+    "dev": "concurrently \"yarn server\" \"yarn client\"",
+    "heroku-postbuild": "YARN_PRODUCTION=false yarn --cwd client install && yarn --cwd client build"
   },
   "dependencies": {
     "bcrypt": "^3.0.6",
