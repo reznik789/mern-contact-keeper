@@ -12,7 +12,7 @@
     "heroku-postbuild": "YARN_PRODUCTION=false yarn --cwd client install && yarn --cwd client build"
   },
   "dependencies": {
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "config": "^3.2.1",
     "express": "^4.17.1",
     "express-validator": "^6.1.1",
